@@ -63,7 +63,7 @@ app.put("/api/student/:id",(req,res)=>{
 })
 app.delete("/api/student/:id",(req,res)=>{
     const id=req.params.id;
-    const studentDataIndex=students.find(student=>student.id===parseInt(id));
+    const studentDataIndex=students.findIndex(student=>student.id===parseInt(id));
     if(studentDataIndex===-1){
         res.status(404).send("Could not Delete As id is not found");
         return;
