@@ -47,7 +47,7 @@ app.put("/api/student/:id",(req,res)=>{
     const {name,currentClass,division}=req.body;
     const studentDataIndex=students.findIndex(student=>student.id===parseInt(id));
     if(studentDataIndex===-1){
-        res.status(404).send("Invalid id");
+        res.status(400).send("Invalid id");
         return;
     }
     if(name){
