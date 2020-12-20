@@ -44,7 +44,7 @@ app.post("/api/student",(req,res)=>{
 
 app.put("/api/student/:id",(req,res)=>{
     const id= req.params.id;
-    const {name,currentClass,division}=req.body.name;
+    const {name,currentClass,division}=req.body;
     const studentDataIndex=students.findIndex(student=>student.id===parseInt(id));
     if(studentDataIndex===-1){
         res.status(404).send("Invalid id");
@@ -62,10 +62,10 @@ app.put("/api/student/:id",(req,res)=>{
     res.send(students[studentDataIndex]);
 })
 app.delete("/api/student/:id",(req,res)=>{
-    const id=parseInt(req.params.id);
+    const id=req.params.id;
     const studentDataIndex=students.find(student=>student.id===parseInt(id));
     if(studentDataIndex===-1){
-        res.status(400).send("Could not Delete As id is not found");
+        res.status(404).send("Could not Delete As id is not found");
         return;
     }
     students.splice(studentDataIndex,1);
